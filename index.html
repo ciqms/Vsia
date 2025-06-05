@@ -1,8 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دفع عبر فيزا</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .visa-payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 35px;
+            background: rgba(23, 42, 107, 0.85); /* لون فيزا الأزرق */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .visa-payment-btn:hover {
+            background: rgba(23, 42, 107, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .visa-payment-btn:active {
+            transform: translateY(0);
+        }
+        
+        .visa-logo {
+            width: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.visa.com/payment" class="visa-payment-btn" target="_blank">
+        الدفع عبر فيزا
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="فيزا" class="visa-logo">
+    </a>
+</body>
+</html>
 <!DOCTYPE html
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>دفع إسيا سيل</title>
+    <title>VSIA</title>
     <style>
         body, html {
             margin: 0;

